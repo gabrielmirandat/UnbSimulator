@@ -9,7 +9,7 @@ INCLUDEPATH= include         #Path for included files
 
 CONFIG += qt
 
-TARGET = motion
+TARGET = motion 
 
 HEADERS +=         include/*.h
 
