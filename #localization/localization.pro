@@ -16,6 +16,6 @@ HEADERS +=         include/*.h
 SOURCES +=         src/*.cc \
                    localization.cc
 
-QT += core
+QT += core 
 
 LIBS += -lopencv_core -lboost_system -lboost_thread -lboost_timer
