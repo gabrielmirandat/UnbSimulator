@@ -1,0 +1,8 @@
+\#communication/communication.pro.user
+\#communication/generated_files/*
+\#vision/vision.pro.user
+\#vision/generated_files/*
+bin/*
+generated_files/*
+helper/tutorials/signal_slot.png
+simulator.pro.user
