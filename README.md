@@ -1,7 +1,7 @@
-#Initial description
+# Initial description
 
 This repo contains a simulator made for the UnBeatables Team - LARA/UnB
 
-#Author
+# Author
 
-Gabriel Martins de Mirada
+Gabriel Martins de Miranda
