@@ -10,6 +10,8 @@
 #include <QSharedMemory>
 #include <QBuffer>
 #include <QDataStream>
+#include <QFile>
+#include <QTextStream>
 #include "../common/data/visionData.h"
 
 class Vision
@@ -30,6 +32,11 @@ private:
     //singletone constructor
     explicit Vision();
     static Vision* instance;
+
+    //for log file
+    QFile out_file_;
+    QTextStream out_stream_;
+
 
     void ball();
     void goal();
