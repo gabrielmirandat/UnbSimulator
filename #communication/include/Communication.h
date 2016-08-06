@@ -8,6 +8,8 @@
 #include <QSharedMemory>
 #include <QBuffer>
 #include <QDataStream>
+#include <QFile>
+#include <QTextStream>
 #include "../common/data/visionData.h"
 
 class Communication
@@ -34,6 +36,10 @@ private:
     void updateData();
     void updateBuffer();
     void getFromSharedMem();
+
+    //for log file
+    QFile out_file_;
+    QTextStream out_stream_;
 
 public:
 	virtual ~Communication();

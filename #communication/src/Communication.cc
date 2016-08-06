@@ -1,20 +1,32 @@
 #include "Communication.h"
 
 Communication::Communication()
-:comm_counter(0), vision_shm("visionBoard")
+:comm_counter(0), vision_shm("visionBoard"),
+out_file_("../process_output/output_comm.txt")
 {
-    //five seconds to configure tail file output_comm.txt
+    //three seconds to configure tail file output_comm.txt
     QThread::msleep(3000);
 
-    //wait vision begin for sharedMemory access
-    QThread::msleep(60);
+    if (out_file_.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        out_stream_.setDevice(&out_file_);
+        out_stream_ << "communication file created" << "\n"; out_stream_.flush();
 
-    if (!vision_shm.attach())
+        //wait vision begin for sharedMemory access
+        QThread::msleep(60);
+
+        if (!vision_shm.attach())
+        {
+            out_stream_ << "could not create vision_shm" << "\n"; out_stream_.flush();
+        }else
+        {
+            run();
+        }
+
+    }
+    else
     {
-        std::cout << "Could not create vision_shm" << std::endl;
-    }else
-    {
-        run();
+        std::cout << "error creating communication file" << std::endl;
     }
 }
 
@@ -35,18 +47,18 @@ Communication::~Communication()
 
 void Communication::listen()
 {
-    std::cout << "          Communication::listen" << std::endl;
+    out_stream_ << "          communication::listen" << "\n"; out_stream_.flush();
 }
 
 void Communication::receive()
 {
-    std::cout << "          Communication::receive" << std::endl;
+    out_stream_ << "          communication::receive" << "\n"; out_stream_.flush();
 }
 
 void Communication::send()
 {
     getFromSharedMem();
-    std::cout << "          Communication::send" << std::endl;
+    out_stream_ << "          communication::send" << "\n"; out_stream_.flush();
 }
 
 void Communication::updateData()
@@ -83,4 +95,5 @@ void Communication::run()
         if(this->comm_counter%7==0) send();
         QThread::msleep(60);
     }
+    out_stream_ << "end of process" << "\n"; out_stream_.flush();
 }

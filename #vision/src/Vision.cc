@@ -2,25 +2,36 @@
 
 Vision::Vision()
 // :vision_counter(0), ball_position(-1,-1), goal_position(-1,-1), center_position(-1,-1), vision_shm("visionBoard")
-:vision_counter(0), ball_position(-1), goal_position(-1), center_position(-1), vision_shm("visionBoard")
+:vision_counter(0), ball_position(-1), goal_position(-1), center_position(-1), vision_shm("visionBoard"),
+out_file_("../process_output/output_vision.txt")
 {
-    //five seconds to configure tail file output_vision.txt
+    //three seconds to configure tail file output_vision.txt
     QThread::msleep(3000);
 
-    //force sharedMemory to not already be attached
-    if(vision_shm.isAttached())
-       vision_shm.detach();
-
-    buffer.open(QBuffer::ReadWrite);
-    out.setDevice(&buffer);
-    updateBuffer();
-
-    if (!vision_shm.create(buffer.size()))
+    if (out_file_.open(QIODevice::WriteOnly | QIODevice::Text))
     {
-       std::cout << "Could not create vision_shm" << std::endl;
-    }else
+        out_stream_.setDevice(&out_file_);
+        out_stream_ << "vision file created" << "\n"; out_stream_.flush();
+
+
+        //force sharedMemory to not already be attached
+        if(vision_shm.isAttached())
+           vision_shm.detach();
+
+        buffer.open(QBuffer::ReadWrite);
+        out.setDevice(&buffer);
+        updateBuffer();
+
+        if (!vision_shm.create(buffer.size()))
+        {
+           out_stream_ << "could not create vision_shm" << "\n"; out_stream_.flush();
+
+        }else
+            run();
+    }
+    else
     {
-       run();
+        std::cout << "error creating vision file" << std::endl;
     }
 }
 
@@ -36,6 +47,7 @@ Vision* Vision::getInstance()
 
 Vision::~Vision()
 {
+    vision_shm.deleteLater();
     delete this->instance;
 }
 
@@ -46,7 +58,7 @@ void Vision::ball()
     this->ball_position = this->bi;
     sendToSharedMem();
 
-    std::cout << "	Vision::ball" << std::endl;
+    out_stream_ << "	vision::ball" << "\n"; out_stream_.flush();
 }
 
 void Vision::goal()
@@ -56,7 +68,7 @@ void Vision::goal()
     this->goal_position = this->gi;
     sendToSharedMem();
 
-    std::cout << "	Vision::goal" << std::endl;
+    out_stream_ << "	vision::goal" << "\n"; out_stream_.flush();
 }
 
 void Vision::center()
@@ -66,7 +78,7 @@ void Vision::center()
     this->center_position = this->ci;
     sendToSharedMem();
 
-    std::cout << "	Vision::center" << std::endl;
+    out_stream_ << "	vision::center" << "\n"; out_stream_.flush();
 }
 
 void Vision::updateData()
