@@ -2,7 +2,7 @@
 
 Communication::Communication()
 :comm_counter(0), vision_shm("visionBoard"),
-out_file_("../process_output/output_comm.txt")
+out_file_("process_output/output_comm.txt")
 {
     //three seconds to configure tail file output_comm.txt
     QThread::msleep(3000);
@@ -95,5 +95,6 @@ void Communication::run()
         if(this->comm_counter%7==0) send();
         QThread::msleep(60);
     }
+    vision_shm.detach();
     out_stream_ << "end of process" << "\n"; out_stream_.flush();
 }
