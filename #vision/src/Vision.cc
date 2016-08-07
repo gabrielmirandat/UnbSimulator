@@ -3,7 +3,7 @@
 Vision::Vision()
 // :vision_counter(0), ball_position(-1,-1), goal_position(-1,-1), center_position(-1,-1), vision_shm("visionBoard")
 :vision_counter(0), ball_position(-1), goal_position(-1), center_position(-1), vision_shm("visionBoard"),
-out_file_("../process_output/output_vision.txt")
+out_file_("process_output/output_vision.txt")
 {
     //three seconds to configure tail file output_vision.txt
     QThread::msleep(3000);
@@ -47,7 +47,6 @@ Vision* Vision::getInstance()
 
 Vision::~Vision()
 {
-    vision_shm.deleteLater();
     delete this->instance;
 }
 
@@ -117,4 +116,6 @@ void Vision::run()
         if(this->vision_counter%11==0) center();
         QThread::msleep(60);
     }
+    vision_shm.detach();
+    out_stream_ << "end of process" << "\n"; out_stream_.flush();
 }
