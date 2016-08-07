@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = simulator1.0.0
-DISTDIR = /home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/simulator_process/generated_files/simulator1.0.0
+DISTDIR = /home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/UnbSimulator/generated_files/simulator1.0.0
 LINK          = g++
 LFLAGS        = -m64 -Wl,-O1
 LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -315,14 +315,14 @@ compiler_moc_header_clean:
 generated_files/moc_Controller.cpp: common/include/Worker.h \
 		common/include/Launcher.h \
 		common/include/Controller.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/simulator_process -I/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/simulator_process/common/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include common/include/Controller.h -o generated_files/moc_Controller.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/UnbSimulator -I/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/UnbSimulator/common/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include common/include/Controller.h -o generated_files/moc_Controller.cpp
 
 generated_files/moc_Launcher.cpp: common/include/Launcher.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/simulator_process -I/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/simulator_process/common/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include common/include/Launcher.h -o generated_files/moc_Launcher.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/UnbSimulator -I/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/UnbSimulator/common/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include common/include/Launcher.h -o generated_files/moc_Launcher.cpp
 
 generated_files/moc_Worker.cpp: common/include/Launcher.h \
 		common/include/Worker.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/simulator_process -I/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/simulator_process/common/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include common/include/Worker.h -o generated_files/moc_Worker.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/UnbSimulator -I/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/UnbSimulator/common/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include common/include/Worker.h -o generated_files/moc_Worker.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
