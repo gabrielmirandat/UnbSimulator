@@ -15,7 +15,7 @@ QStringList comm_args(QString("nothing"));
 
 int main(int argc, char *argv[])
 {
-    QDir::setCurrent("/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/simulator_process");
+    //QDir::setCurrent("/home/gabriel/Dropbox/5.Recente/Desktop/BOOST_THREADS/simulator_process");
     QCoreApplication a(argc, argv);
 	
 	QElapsedTimer timer;
