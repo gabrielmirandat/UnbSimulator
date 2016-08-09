@@ -18,6 +18,5 @@ void Worker::doWork()
     this->launcher_->launch(this->program_, this->argList_);
 
     result = "Deu";
-    qDebug() << "DEEEUUU";
     emit resultReady(result);
 }
