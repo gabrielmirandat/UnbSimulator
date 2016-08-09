@@ -19,4 +19,4 @@ SOURCES +=         common/src/*.cc \
 		   		   
 QT += core
 
-#LIBS += -lopencv_core -lboost_system -lboost_thread -lboost_timer
+LIBS += -lopencv_core -lboost_system -lboost_thread -lboost_timer
