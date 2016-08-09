@@ -1,8 +1,7 @@
 #include "Vision.h"
 
 Vision::Vision()
-// :vision_counter(0), ball_position(-1,-1), goal_position(-1,-1), center_position(-1,-1), vision_shm("visionBoard")
-:vision_counter(0), ball_position(-1), goal_position(-1), center_position(-1), vision_shm("visionBoard"),
+:vision_counter(0), ball_position(-1,-1), goal_position(-1,-1), center_position(-1,-1), vision_shm("visionBoard"),
 out_file_("process_output/output_vision.txt")
 {
     //three seconds to configure tail file output_vision.txt
@@ -53,8 +52,7 @@ Vision::~Vision()
 void Vision::ball()
 {
     this->bi = (++this->bi%4 == 0) ? this->bi : -1;
-    // this->ball_position = cv::Point(this->bi,this->bi);
-    this->ball_position = this->bi;
+    this->ball_position = cv::Point(this->bi,this->bi);
     sendToSharedMem();
 
     out_stream_ << "	vision::ball" << "\n"; out_stream_.flush();
@@ -63,8 +61,7 @@ void Vision::ball()
 void Vision::goal()
 {
     this->gi = (++this->gi%7 == 0) ? this->gi : -1;
-    // this->goal_position = cv::Point(this->gi,this->gi);
-    this->goal_position = this->gi;
+    this->goal_position = cv::Point(this->gi,this->gi);
     sendToSharedMem();
 
     out_stream_ << "	vision::goal" << "\n"; out_stream_.flush();
@@ -73,8 +70,7 @@ void Vision::goal()
 void Vision::center()
 {
     this->ci = (++this->ci%5 == 0) ? this->ci : -1;
-    // this->center_position = cv::Point(this->ci,this->ci);
-    this->center_position = this->ci;
+    this->center_position = cv::Point(this->ci,this->ci);
     sendToSharedMem();
 
     out_stream_ << "	vision::center" << "\n"; out_stream_.flush();
@@ -82,9 +78,9 @@ void Vision::center()
 
 void Vision::updateData()
 {
-    this->vision_data.ball_position =this->ball_position;
-    this->vision_data.goal_position =this->goal_position;
-    this->vision_data.center_position =this->center_position;
+    this->vision_data.ball_position =this->ball_position.x;
+    this->vision_data.goal_position =this->goal_position.x;
+    this->vision_data.center_position =this->center_position.x;
 }
 
 void Vision::updateBuffer()

@@ -19,8 +19,7 @@ class Vision
 
 private:
 	int vision_counter;
-	// cv::Point ball_position, goal_position, center_position;
-    int ball_position, goal_position, center_position;
+    cv::Point ball_position, goal_position, center_position;
 	int bi, gi, ci;
 
     //for shared access
