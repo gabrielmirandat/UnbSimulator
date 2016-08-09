@@ -19,13 +19,13 @@ Launcher::Launcher(QObject* parent)
     connect(this,
             SIGNAL(feedbackLog(QString)),
             SLOT(printLog(QString)));
-} // end_ctor(ExternalLauncher)
+}
 
 Launcher::~Launcher()
 {
     if (started_ && process_->state() != QProcess::NotRunning)
         process_->kill();
-}// end_dtor(Launcher)
+}
 
 void Launcher::launch(QString program, QStringList argList)
 {
@@ -37,22 +37,22 @@ void Launcher::launch(QString program, QStringList argList)
     process_->waitForFinished(-1); // (c)
     //Q_EMIT feedbackLog(process_->readAllStandardOutput());
     process_->close();
-} // end Launcher::launch()
+}
 
 void Launcher::error(QProcess::ProcessError error)
 {
     qDebug() << "Launcher::error" << error;
-} // end_slot(Launcher::error)
+}
 
 void Launcher::finished(int exitCode, QProcess::ExitStatus status)
 {
     started_ = false;
     qDebug() << "Launcher::finished" << exitCode << status;
-} // end_slot (Launcher::finished)
+}
 
 void Launcher::stateChanged(QProcess::ProcessState state)
 {
-    qDebug() << "Launcher::stateChanged" << state;
+    //qDebug() << "Launcher::stateChanged" << state;
 }
 
 void Launcher::printLog(QString log)
