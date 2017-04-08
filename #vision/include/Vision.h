@@ -12,21 +12,17 @@
 #include <QDataStream>
 #include <QFile>
 #include <QTextStream>
-#include "../common/data/visionData.h"
 
-class Vision
+#include "visionData.h"
+
+class Vision  : public QThread
 {
 
 private:
 	int vision_counter;
     cv::Point ball_position, goal_position, center_position;
 	int bi, gi, ci;
-
-    //for shared access
-    QSharedMemory vision_shm;
     visionData vision_data;
-    QBuffer buffer;
-    QDataStream out;
 
     //singletone constructor
     explicit Vision();
@@ -44,8 +40,6 @@ private:
 
     //for shared access
     void updateData();
-    void updateBuffer();
-    void sendToSharedMem();
 
 public:
     virtual ~Vision();

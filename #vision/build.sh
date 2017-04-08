@@ -1,3 +1,3 @@
 #!/bin/bash
-qmake -o Makefile vision.pro
+qmake -o Makefile zvision.pro
 make

@@ -5,16 +5,18 @@
 OBJECTS_DIR= generated_files #Intermediate object files directory
 MOC_DIR=     generated_files #Intermediate moc files directory
 DESTDIR=     ../bin          #Target file directory
-INCLUDEPATH= include         #Path for included files
+INCLUDEPATH= include    \    #Path for included files
+             ../data
 
 CONFIG += qt
 
-TARGET = acommunication
+TARGET = zcommunication
 
-HEADERS +=         include/*.h
+HEADERS +=         include/*.h \
+                   ../data/*h
 
 SOURCES +=         src/*.cc \
-                   acommunication.cc
+                   zcommunication.cc
 
 QT += core
 

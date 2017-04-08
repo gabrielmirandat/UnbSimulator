@@ -10,18 +10,13 @@
 #include <QDataStream>
 #include <QFile>
 #include <QTextStream>
-#include "../common/data/visionData.h"
 
-class Communication
+#include "visionData.h"
+
+class Communication  : public QThread
 {
 private:
 	int comm_counter;
-
-    //for shared access
-    QSharedMemory vision_shm;
-    visionData vision_data;
-    QBuffer buffer;
-    QDataStream in;
 
     //singletone constructor
     explicit Communication();
@@ -34,8 +29,6 @@ private:
 
     //for shared access
     void updateData();
-    void updateBuffer();
-    void getFromSharedMem();
 
     //for log file
     QFile out_file_;

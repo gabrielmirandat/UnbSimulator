@@ -5,17 +5,12 @@
 OBJECTS_DIR= generated_files #Intermediate object files directory
 MOC_DIR=     generated_files #Intermediate moc files directory
 DESTDIR=     bin             #Target file directory
-INCLUDEPATH= common/include  #Path for included files
 
 CONFIG += qt
 
-TARGET = simulator
+TARGET = zsimulator
 
-HEADERS +=         common/include/*.h \
-                   common/data/*.h
-
-SOURCES +=         common/src/*.cc \
-                   main.cc
+SOURCES +=  zsimulator.cc
 		   		   
 QT += core
 

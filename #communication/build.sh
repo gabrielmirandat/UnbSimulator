@@ -1,3 +1,3 @@
 #!/bin/bash
-qmake -o Makefile communication.pro
+qmake -o Makefile zcommunication.pro
 make

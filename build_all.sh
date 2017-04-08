@@ -3,9 +3,10 @@
 
 cd '#vision'
 ./build.sh
+
 cd '../#communication'
 ./build.sh
-cd '../'
 
-qmake -o Makefile simulator.pro
+cd '../'
+qmake -o Makefile zsimulator.pro
 make

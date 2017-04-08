@@ -1,7 +1,7 @@
 #include "Communication.h"
 
 Communication::Communication()
-:comm_counter(0), vision_shm("visionBoard"),
+:comm_counter(0),
 out_file_("process_output/output_comm.txt")
 {
     //three seconds to configure tail file output_comm.txt
@@ -11,17 +11,8 @@ out_file_("process_output/output_comm.txt")
     {
         out_stream_.setDevice(&out_file_);
         out_stream_ << "communication file created" << "\n"; out_stream_.flush();
-
-        //wait vision begin for sharedMemory access
-        QThread::msleep(60);
-
-        if (!vision_shm.attach())
-        {
-            out_stream_ << "could not create vision_shm" << "\n"; out_stream_.flush();
-        }else
-        {
-            run();
-        }
+        
+        run();
 
     }
     else
@@ -57,33 +48,7 @@ void Communication::receive()
 
 void Communication::send()
 {
-    getFromSharedMem();
     out_stream_ << "          communication::send" << "\n"; out_stream_.flush();
-}
-
-void Communication::updateData()
-{
-    buffer.open(QIODevice::ReadOnly);
-    in.setDevice(&buffer);
-    in >> vision_data.ball_position;
-    in >> vision_data.goal_position;
-    in >> vision_data.center_position;
-    buffer.close();
-}
-
-void Communication::updateBuffer()
-{
-    vision_shm.lock();
-    buffer.setData((char*) vision_shm.constData(), vision_shm.size());
-    vision_shm.unlock();
-}
-
-void Communication::getFromSharedMem()
-{
-    // Send data to buffer
-    updateBuffer();
-    // read into local visionData
-    updateData();
 }
 
 void Communication::run()
@@ -95,6 +60,6 @@ void Communication::run()
         if(this->comm_counter%7==0) send();
         QThread::msleep(60);
     }
-    vision_shm.detach();
+
     out_stream_ << "end of process" << "\n"; out_stream_.flush();
 }
