@@ -5,6 +5,7 @@
 #include <iostream>
 #include <opencv2/core/core.hpp>
 #include <QThread>
+#include <QDebug>
 
 //for shared access
 #include <QSharedMemory>
@@ -22,7 +23,6 @@ private:
 	int vision_counter;
     cv::Point ball_position, goal_position, center_position;
 	int bi, gi, ci;
-    visionData vision_data;
 
     //singletone constructor
     explicit Vision();
@@ -32,6 +32,10 @@ private:
     QFile out_file_;
     QTextStream out_stream_;
 
+    //shared memory
+    visionData write_vision_data_;
+    visionData read_vision_data_;
+    QSharedMemory shared_memory_;
 
     void ball();
     void goal();
@@ -40,6 +44,8 @@ private:
 
     //for shared access
     void updateData();
+    void sendData();
+    void loadData();
 
 public:
     virtual ~Vision();
